@@ -18,7 +18,7 @@ var errors = bitcore.errors;
 describe('Output', function() {
 
   var output = new Output({
-    atoms: 0,
+    exels: 0,
     script: Script.empty()
   });
 
@@ -30,60 +30,60 @@ describe('Output', function() {
 
   it('can be assigned a satoshi amount in big number', function() {
     var newOutput = new Output({
-      atoms: new BN(100),
+      exels: new BN(100),
       script: Script.empty()
     });
-    newOutput.atoms.should.equal(100);
+    newOutput.exels.should.equal(100);
   });
 
   it('can be assigned a satoshi amount with a string', function() {
     var newOutput = new Output({
-      atoms: '100',
+      exels: '100',
       script: Script.empty()
     });
-    newOutput.atoms.should.equal(100);
+    newOutput.exels.should.equal(100);
   });
 
   describe('will error if output is not a positive integer', function() {
     it('-100', function() {
       (function() {
         var newOutput = new Output({
-          atoms: -100,
+          exels: -100,
           script: Script.empty()
         });
-      }).should.throw('Output atoms is not a natural number');
+      }).should.throw('Output exels is not a natural number');
     });
 
     it('1.1', function() {
       (function() {
         var newOutput = new Output({
-          atoms: 1.1,
+          exels: 1.1,
           script: Script.empty()
         });
-      }).should.throw('Output atoms is not a natural number');
+      }).should.throw('Output exels is not a natural number');
     });
 
     it('NaN', function() {
       (function() {
         var newOutput = new Output({
-          atoms: NaN,
+          exels: NaN,
           script: Script.empty()
         });
-      }).should.throw('Output atoms is not a natural number');
+      }).should.throw('Output exels is not a natural number');
     });
 
     it('Infinity', function() {
       (function() {
         var newOutput = new Output({
-          atoms: Infinity,
+          exels: Infinity,
           script: Script.empty()
         });
-      }).should.throw('Output atoms is not a natural number');
+      }).should.throw('Output exels is not a natural number');
     });
   });
 
   var expectEqualOutputs = function(a, b) {
-    a.atoms.should.equal(b.atoms);
+    a.exels.should.equal(b.exels);
     a.script.toString().should.equal(b.script.toString());
   };
 
@@ -102,15 +102,15 @@ describe('Output', function() {
   it('can set a script from a buffer', function() {
     var newOutput = new Output(output.toObject());
     newOutput.setScript(Script().add(0).toBuffer());
-    newOutput.inspect().should.equal('<Output (0 sats) <Script: OP_0>>');
+    newOutput.inspect().should.equal('<Output (0 exels) <Script: OP_0>>');
   });
 
   it('has a inspect property', function() {
-    output.inspect().should.equal('<Output (0 sats) <Script: >>');
+    output.inspect().should.equal('<Output (0 exels) <Script: >>');
   });
 
   var output2 = new Output({
-    atoms: 1100000000,
+    exels: 1100000000,
     script: new Script('OP_2 21 0x038282263212c609d9ea2a6e3e172de238d8c39' +
       'cabd5ac1ca10646e23fd5f51508 21 0x038282263212c609d9ea2a6e3e172de23' +
       '8d8c39cabd5ac1ca10646e23fd5f51508 OP_2 OP_CHECKMULTISIG OP_EQUAL')
@@ -125,7 +125,7 @@ describe('Output', function() {
 
   it('roundtrips to/from object', function() {
     var newOutput = new Output({
-      atoms: 50,
+      exels: 50,
       script: new Script().add(0)
     });
     var otherOutput = new Output(newOutput.toObject());
@@ -157,7 +157,7 @@ describe('Output', function() {
     var invalidOutputScript = new Buffer('0100000000000000014c', 'hex');
     var br = new bitcore.encoding.BufferReader(invalidOutputScript);
     var output = Output.fromBufferReader(br);
-    output.inspect().should.equal('<Output (1 sats) 4c>');
+    output.inspect().should.equal('<Output (1 exels) 4c>');
   });
 
   it('roundtrips to/from JSON', function() {
@@ -173,7 +173,7 @@ describe('Output', function() {
 
   it('sets script to null if it is an InvalidBuffer', function() {
     var output = new Output({
-      atoms: 1000,
+      exels: 1000,
       script: new Buffer('4c', 'hex')
     });
     should.equal(output.script, null);
@@ -181,7 +181,7 @@ describe('Output', function() {
 
   it('should throw an error if Script throws an error that is not InvalidBuffer', function() {
     var output = Output({
-      atoms: 1000,
+      exels: 1000,
       script: new Script()
     });
     (function() {

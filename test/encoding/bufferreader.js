@@ -190,11 +190,11 @@ describe('BufferReader', function() {
       br.readUInt64LEBN().toNumber().should.equal(1);
     });
 
-    it('should return 10DCR', function() {
-      var tendcr = 10 * 1e8;
-      var tendcrBuffer = new Buffer('00ca9a3b00000000', 'hex');
-      var br = new BufferReader(tendcrBuffer);
-      br.readUInt64LEBN().toNumber().should.equal(tendcr);
+    it('should return 10EXCC', function() {
+      var tenexcc = 10 * 1e8;
+      var tenexccBuffer = new Buffer('00ca9a3b00000000', 'hex');
+      var br = new BufferReader(tenexccBuffer);
+      br.readUInt64LEBN().toNumber().should.equal(tenexcc);
     });
 
     it('should return 2^30', function() {
@@ -212,7 +212,7 @@ describe('BufferReader', function() {
       br.readUInt64LEBN().toNumber().should.equal(num);
     });
 
-    it('should return max number of atoms', function() {
+    it('should return max number of exels', function() {
       var maxSatoshis = 21000000 * 1e8;
       var maxSatoshisBuffer = new Buffer('0040075af0750700', 'hex');
       var br = new BufferReader(maxSatoshisBuffer);

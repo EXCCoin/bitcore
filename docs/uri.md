@@ -34,7 +34,7 @@ The code for creating an URI from an Object looks like this:
 ```javascript
 var uriString = new URI({
   address: '12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu',
-  amount : 10000, // in atoms
+  amount : 10000, // in exels
   message: 'My payment request'
 });
 var uriString = uri.toString();

@@ -31,7 +31,7 @@ var utxo = {
   "outputIndex" : 0,
   "address" : "17XBj6iFEsf8kzDMGQk5ghZipxX49VXuaV",
   "script" : "76a91447862fe165e6121af80d5dde1ecb478ed170565b88ac",
-  "atoms" : 50000
+  "exels" : 50000
 };
 
 var transaction = new bitcore.Transaction()
@@ -68,7 +68,7 @@ var utxo = {
   "outputIndex" : 0,
   "address" : "17XBj6iFEsf8kzDMGQk5ghZipxX49VXuaV",
   "script" : "76a91447862fe165e6121af80d5dde1ecb478ed170565b88ac",
-  "atoms" : 50000
+  "exels" : 50000
 };
 
 var transaction = new bitcore.Transaction()
@@ -103,7 +103,7 @@ var utxo = {
   "outputIndex" : 0,
   "address" : address.toString(),
   "script" : new bitcore.Script(address).toHex(),
-  "atoms" : 20000
+  "exels" : 20000
 };
 
 var transaction = new bitcore.Transaction()

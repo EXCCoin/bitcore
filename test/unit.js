@@ -11,7 +11,7 @@ describe('Unit', function() {
 
   it('can be created from a number and unit', function() {
     expect(function() {
-      return new Unit(1.2, 'DCR');
+      return new Unit(1.2, 'EXCC');
     }).to.not.throw();
   });
 
@@ -23,7 +23,7 @@ describe('Unit', function() {
 
   it('no "new" is required for creating an instance', function() {
     expect(function() {
-      return Unit(1.2, 'DCR');
+      return Unit(1.2, 'EXCC');
     }).to.not.throw();
 
     expect(function() {
@@ -31,114 +31,114 @@ describe('Unit', function() {
     }).to.not.throw();
   });
 
-  it('has property accesors "DCR", "mDCR", "uDCR", "dbits", and "atoms"', function() {
-    var unit = new Unit(1.2, 'DCR');
-    unit.DCR.should.equal(1.2);
-    unit.mDCR.should.equal(1200);
-    unit.uDCR.should.equal(1200000);
+  it('has property accesors "EXCC", "mEXCC", "uEXCC", "dbits", and "exels"', function() {
+    var unit = new Unit(1.2, 'EXCC');
+    unit.EXCC.should.equal(1.2);
+    unit.mEXCC.should.equal(1200);
+    unit.uEXCC.should.equal(1200000);
     unit.dbits.should.equal(1200000);
-    unit.atoms.should.equal(120000000);
+    unit.exels.should.equal(120000000);
   });
 
   it('a string amount is allowed', function() {
     var unit;
 
-    unit = Unit.fromDCR('1.00001');
-    unit.DCR.should.equal(1.00001);
+    unit = Unit.fromEXCC('1.00001');
+    unit.EXCC.should.equal(1.00001);
 
     unit = Unit.fromMillis('1.00001');
-    unit.mDCR.should.equal(1.00001);
+    unit.mEXCC.should.equal(1.00001);
 
     unit = Unit.fromDbits('100');
     unit.dbits.should.equal(100);
 
-    unit = Unit.fromAtoms('8999');
-    unit.atoms.should.equal(8999);
+    unit = Unit.fromExels('8999');
+    unit.exels.should.equal(8999);
 
     unit = Unit.fromFiat('43', 350);
-    unit.DCR.should.equal(0.12285714);
+    unit.EXCC.should.equal(0.12285714);
   });
 
   it('should have constructor helpers', function() {
     var unit;
 
-    unit = Unit.fromDCR(1.00001);
-    unit.DCR.should.equal(1.00001);
+    unit = Unit.fromEXCC(1.00001);
+    unit.EXCC.should.equal(1.00001);
 
     unit = Unit.fromMilis(1.00001);
-    unit.mDCR.should.equal(1.00001);
+    unit.mEXCC.should.equal(1.00001);
 
     unit = Unit.fromDbits(100);
     unit.dbits.should.equal(100);
 
-    unit = Unit.fromAtoms(8999);
-    unit.atoms.should.equal(8999);
+    unit = Unit.fromExels(8999);
+    unit.exels.should.equal(8999);
 
     unit = Unit.fromFiat(43, 350);
-    unit.DCR.should.equal(0.12285714);
+    unit.EXCC.should.equal(0.12285714);
   });
 
-  it('converts to atoms correctly', function() {
+  it('converts to exels correctly', function() {
     /* jshint maxstatements: 25 */
     var unit;
 
-    unit = Unit.fromDCR(1.3);
-    unit.mDCR.should.equal(1300);
+    unit = Unit.fromEXCC(1.3);
+    unit.mEXCC.should.equal(1300);
     unit.dbits.should.equal(1300000);
-    unit.atoms.should.equal(130000000);
+    unit.exels.should.equal(130000000);
 
     unit = Unit.fromMilis(1.3);
-    unit.DCR.should.equal(0.0013);
+    unit.EXCC.should.equal(0.0013);
     unit.dbits.should.equal(1300);
-    unit.atoms.should.equal(130000);
+    unit.exels.should.equal(130000);
 
     unit = Unit.fromDbits(1.3);
-    unit.DCR.should.equal(0.0000013);
-    unit.mDCR.should.equal(0.0013);
-    unit.atoms.should.equal(130);
+    unit.EXCC.should.equal(0.0000013);
+    unit.mEXCC.should.equal(0.0013);
+    unit.exels.should.equal(130);
 
-    unit = Unit.fromAtoms(3);
-    unit.DCR.should.equal(0.00000003);
-    unit.mDCR.should.equal(0.00003);
+    unit = Unit.fromExels(3);
+    unit.EXCC.should.equal(0.00000003);
+    unit.mEXCC.should.equal(0.00003);
     unit.dbits.should.equal(0.03);
   });
 
   it('takes into account floating point problems', function() {
-    var unit = Unit.fromDCR(0.00000003);
-    unit.mDCR.should.equal(0.00003);
+    var unit = Unit.fromEXCC(0.00000003);
+    unit.mEXCC.should.equal(0.00003);
     unit.dbits.should.equal(0.03);
-    unit.atoms.should.equal(3);
+    unit.exels.should.equal(3);
   });
 
   it('exposes unit codes', function() {
-    should.exist(Unit.DCR);
-    Unit.DCR.should.equal('DCR');
+    should.exist(Unit.EXCC);
+    Unit.EXCC.should.equal('EXCC');
 
-    should.exist(Unit.mDCR);
-    Unit.mDCR.should.equal('mDCR');
+    should.exist(Unit.mEXCC);
+    Unit.mEXCC.should.equal('mEXCC');
 
     should.exist(Unit.dbits);
     Unit.dbits.should.equal('dbits');
 
-    should.exist(Unit.atoms);
-    Unit.atoms.should.equal('atoms');
+    should.exist(Unit.exels);
+    Unit.exels.should.equal('exels');
   });
 
   it('exposes a method that converts to different units', function() {
-    var unit = new Unit(1.3, 'DCR');
-    unit.to(Unit.DCR).should.equal(unit.DCR);
-    unit.to(Unit.mDCR).should.equal(unit.mDCR);
+    var unit = new Unit(1.3, 'EXCC');
+    unit.to(Unit.EXCC).should.equal(unit.EXCC);
+    unit.to(Unit.mEXCC).should.equal(unit.mEXCC);
     unit.to(Unit.dbits).should.equal(unit.dbits);
-    unit.to(Unit.atoms).should.equal(unit.atoms);
+    unit.to(Unit.exels).should.equal(unit.exels);
   });
 
   it('exposes shorthand conversion methods', function() {
-    var unit = new Unit(1.3, 'DCR');
-    unit.toDCR().should.equal(unit.DCR);
-    unit.toMilis().should.equal(unit.mDCR);
-    unit.toMillis().should.equal(unit.mDCR);
+    var unit = new Unit(1.3, 'EXCC');
+    unit.toEXCC().should.equal(unit.EXCC);
+    unit.toMilis().should.equal(unit.mEXCC);
+    unit.toMillis().should.equal(unit.mEXCC);
     unit.toDbits().should.equal(unit.dbits);
-    unit.toAtoms().should.equal(unit.atoms);
+    unit.toExels().should.equal(unit.exels);
   });
 
   it('can convert to fiat', function() {
@@ -146,18 +146,18 @@ describe('Unit', function() {
     unit.atRate(350).should.equal(1.3);
     unit.to(350).should.equal(1.3);
 
-    unit = Unit.fromDCR(0.0123);
+    unit = Unit.fromEXCC(0.0123);
     unit.atRate(10).should.equal(0.12);
   });
 
   it('toString works as expected', function() {
-    var unit = new Unit(1.3, 'DCR');
+    var unit = new Unit(1.3, 'EXCC');
     should.exist(unit.toString);
     unit.toString().should.be.a('string');
   });
 
   it('can be imported and exported from/to JSON', function() {
-    var json = JSON.stringify({amount:1.3, code:'DCR'});
+    var json = JSON.stringify({amount:1.3, code:'EXCC'});
     var unit = Unit.fromObject(JSON.parse(json));
     JSON.stringify(unit).should.deep.equal(json);
   });
@@ -169,8 +169,8 @@ describe('Unit', function() {
   });
 
   it('inspect method displays nicely', function() {
-    var unit = new Unit(1.3, 'DCR');
-    unit.inspect().should.equal('<Unit: 130000000 atoms>');
+    var unit = new Unit(1.3, 'EXCC');
+    unit.inspect().should.equal('<Unit: 130000000 exels>');
   });
 
   it('fails when the unit is not recognized', function() {
@@ -178,7 +178,7 @@ describe('Unit', function() {
       return new Unit(100, 'USD');
     }).to.throw(errors.Unit.UnknownCode);
     expect(function() {
-      return new Unit(100, 'DCR').to('USD');
+      return new Unit(100, 'EXCC').to('USD');
     }).to.throw(errors.Unit.UnknownCode);
   });
 
@@ -187,7 +187,7 @@ describe('Unit', function() {
       return new Unit(100, -123);
     }).to.throw(errors.Unit.InvalidRate);
     expect(function() {
-      return new Unit(100, 'DCR').atRate(-123);
+      return new Unit(100, 'EXCC').atRate(-123);
     }).to.throw(errors.Unit.InvalidRate);
   });
 
