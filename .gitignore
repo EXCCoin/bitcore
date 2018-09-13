@@ -13,3 +13,4 @@ docs
 browser/bitcore-dev.js
 browser/testdata.js
 browser/bundle.js
+.idea/

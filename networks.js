@@ -60,57 +60,53 @@ exports.testnet = {
   defaultClientPort: 18333
 };
 
-exports.dcrdlivenet = {
-  name: 'dcrdlivenet',
-  magic: hex('f900b4d9'),
-  addressVersion: 0x073f,
-  privKeyVersion: 0x22de,
-  P2SHVersion: 0x071a,
-  hkeyPublicVersion: 0x02fda926,
-  hkeyPrivateVersion: 0x02fda4e8,
+exports.exccdlivenet = {
+  name: 'exccdlivenet',
+  magic: hex('e1d71799'),
+  addressVersion: 0x21b9,
+  privKeyVersion: 0x80,
+  P2SHVersion: 0x34af,
+  hkeyPublicVersion: 0x0488b2e1,
+  hkeyPrivateVersion: 0x0488ade4,
   genesisBlock: {
-    hash: hex('80d9212bf4ceb066ded2866b39d4ed89e0ab60f335c11df8e7bf85d9c35c8e29'), //
-    merkle_root: hex('4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b'),
+    hash: hex('7894a6641a12f4f55e5faa1691c5a1f1ddb0d05d03817b834bfc9f5efadd915f'), //
+    merkle_root: hex('8a2c43aa5acaba5bdb5dc2191201ca9ae0f56f0e149bb58ddb4dccc5c844d7e0'),
     height: 0,
-    nonce: 2083236893,
+    nonce: 0,
     version: 1,
     prev_hash: buffertools.fill(new Buffer(32), 0),
-    timestamp: 1296688602,
-    bits: "207ffffff",
+    timestamp: 1531731600,
+    bits: "2000a3d7",
   },
   dnsSeeds: [
-    "mainnet-seed.decred.mindcry.org",
-    "mainnet-seed.decred.netpurgatory.com",
-    "mainnet.decredseed.org",
-    "mainnet-seed.decred.org"
+    "seed.excc.co",
+    "seed.xchange.me",
+    "excc-seed.pragmaticcoders.com",
+    "seed.exccited.com"
   ],
   defaultClientPort: 9108
 };
 
-exports.dcrdtestnet = {
-  name: 'dcrdtestnet',
-  magic: hex('75aa94b1'),
+exports.exccdtestnet = {
+  name: 'exccdtestnet',
+  magic: hex('2a75a45a'),
   addressVersion: 0x0f21,
-  privKeyVersion: 0x230e,
+  privKeyVersion: 0xef,
   P2SHVersion: 0x0efc,
   hkeyPublicVersion: 0x043587d1,
   hkeyPrivateVersion: 0x04358397,
   genesisBlock: {
-
-    hash: hex('ac9ba434b6f7249b9698d1fcec26d6087e8358c811c7e922f4ca1839e5dc49a6'),
-    merkle_root: hex('e7dfbceac9fccd6025c70a1dfa9302b3e7b5aa22fa51c98a69164ad403d60a2c'),
+    hash: hex('c049c55f8af52b8423d090758f003c515441209ab880a782a6d5594a51abf338'),
+    merkle_root: hex('e736813725d3c63f4f50816b627c1394d268fab23ef9bd5e81ea633b48042953'),
     height: 0,
     nonce: 414098458,
-    version: 6,
+    version: 4,
     prev_hash: buffertools.fill(new Buffer(32), 0),
-    timestamp: 1533513600,
-    bits: "1e00ffff",
+    timestamp: 1532420489,
+    bits: "20066666",
   },
   dnsSeeds: [
-    "testnet-seed.decred.mindcry.org",
-    "testnet-seed.decred.netpurgatory.org",
-    "testnet.decredseed.org",
-    "testnet-seed.decred.org"
+    "testnet-seed.excc.co"
   ],
   defaultClientPort: 19108
 };

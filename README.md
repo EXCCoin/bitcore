@@ -1,7 +1,7 @@
 Bitcore
 =======
 
-Decred fork
+ExchangeCoin fork (from Decred fork)
 
 [![Build Status](https://travis-ci.org/bitpay/bitcore.svg?branch=master)](https://travis-ci.org/bitpay/bitcore)
 [![Coverage Status](https://img.shields.io/coveralls/bitpay/bitcore.svg)](https://coveralls.io/r/bitpay/bitcore)

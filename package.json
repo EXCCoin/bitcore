@@ -48,7 +48,7 @@
   "main": "bitcore.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/decred/bitcore"
+    "url": "http://github.com/EXCCoin/bitcore"
   },
   "scripts": {
     "install": "node-gyp rebuild",
@@ -57,8 +57,8 @@
     "prepublish": "node browser/build.js -a"
   },
   "dependencies": {
-    "crypto-js": "git://github.com/decred/crypto-js.git#jcv_npm",
-    "crypto-browserify": "git://github.com/decred/crypto-browserify.git#master-legacy",
+    "crypto-js": "^3.1.2",
+    "crypto-browserify": "^3.12.0",
     "asn1.js": "0.4.1",
     "async": "~0.2.10",
     "bignum": "^0.11.0",
@@ -76,7 +76,8 @@
     "preconditions": "^1.0.7",
     "protobufjs": "=3.0.0",
     "sjcl": "=1.0.1",
-    "socks5-client": "~0.3.6"
+    "socks5-client": "~0.3.6",
+    "lodash": "^4.17.10"
   },
   "testling": {
     "harness": "mocha-bdd",
@@ -106,7 +107,7 @@
     "node": ">=0.10 <=0.10.40"
   },
   "devDependencies": {
-    "browserify": "=3.40.0",
+    "browserify": "^3.0.0",
     "chai": "=1.9.1",
     "commander": "~2.2.0",
     "coveralls": "^2.10.0",

@@ -26,7 +26,7 @@ var run = function() {
     };
 
     var peerman = new PeerManager({
-	network: 'dcrdtestnet'
+	network: 'exccdtestnet'
 	//network: 'testnet'
     });
 
